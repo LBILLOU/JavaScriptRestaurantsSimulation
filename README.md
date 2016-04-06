@@ -12,15 +12,11 @@
 Files downloaded in JavaScriptRestaurantsSimulation.zip:
 
     • app folder (js files):
-    	-
-    	-
-    	-
-    	-
-    • .editorconfig: File to configure your IDE to this project.
-    • .gitignore
-    • .jscsrc
-    • .jshintrc
-    • Gruntfile.js: 
+    	- crc.js: Clock, Restaurant and Client classes.
+    	- index.test.js: Unit tests file.
+    	- main.js: Main file of simulation.
+    	- market.js: Market class.
+    • Gruntfile.js: Project's grunt file. 
     • package.json: All project dependencies.
     • README.md: read me file explaining and helping project setup.
     
