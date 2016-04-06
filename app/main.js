@@ -4,7 +4,11 @@ const chalk = require('chalk');
 
 var Market = require('./market.js');
 var Restaurant = require('./crc.js');
+var Clock = require('./crc.js');
 const numberOfRestaurants = Restaurant.numberOfRestaurants;
+
+//Creating clock
+var mainClock = new Clock.clock();
 
 // Creating market
 new Market.market();
@@ -23,3 +27,5 @@ for (var x = 0; x < numberOfRestaurants; x++) {
   console.log(chalk.yellow('Stocks : ' + restaurant.ingredients));
   Restaurant.listOfRestaurants.push(restaurant);
 }
+
+module.exports.mainClock = mainClock;

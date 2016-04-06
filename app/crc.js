@@ -4,14 +4,14 @@
 
 const chalk = require('chalk');
 var Market = require('./market.js');
-var Restaurant = require('./crc.js');
+var mainClock = require('./main.js');
 const EventEmitter = require('events').EventEmitter;
 const ev = new EventEmitter();
 ev.setMaxListeners(20); // Setting max to 20 (cf. ev.on('createClients'))
 
 // Simulation settings
 const daysOfSimulation = 1; // Days of simulation
-const msForMinute = 20; // Milliseconds for one minute in simulation
+const msForMinute = 15; // Milliseconds for one minute in simulation
 const rushHourStockValueCheck = 5; // If stocks <= value, go to market
 const marketRefuelValue = 8; //Market refueling value for each ingredient
 const numberOfRestaurants = 3; // Is exported to main
@@ -32,7 +32,7 @@ class Clock {
     this.minute = 0; // Number of minutes of clock
     this.hour = 23; // Number of hours of clock
     this.day = 0; // Number of days of clock
-    // Launch clock every 'simulation minute time'
+    // Launch clock minute++ every 'simulation minute time'
     this.whatTimeIsIt = setInterval(() => {this.runClock();
     }, msForMinute);
   }
@@ -142,14 +142,14 @@ class Clock {
 }
 
 // Creating clock
-var timeClock = new Clock();
+//var timeClock = new Clock();
 
 // Restaurant class
 class restaurant{
   /**
    * Construct a Restaurant
    * @param {int} id - Specific an unique ID for the restaurant
-   * @param {[int, int]} hours - Opening and closing hours ex:[6, 22]
+   * @param {[int]} hours - Opening and closing hours ex:[6, 22]
    * @param {int} seats - Number of seats of the restaurant
      */
   constructor(id, hours, seats) {
@@ -166,14 +166,14 @@ class restaurant{
     ev.on('restaurantOpenClose', (hour)=> {
       if (hour == this.hours[0]) {
         this.isOpen = true;
-        console.log(chalk.yellow(timeClock.hour + ':00 ' + 'Restaurant ' +
-          this.id + ' is opened.'));
+        console.log(chalk.yellow(mainClock.mainClock.hour + ':00 ' +
+          'Restaurant ' + this.id + ' is opened.'));
         ev.emit('checkStockZero');
       }
       if (hour == this.hours[1]) {
         this.isOpen = false;
-        console.log(chalk.yellow(timeClock.hour + ':00 ' + 'Restaurant ' +
-          this.id + ' is closed.'));
+        console.log(chalk.yellow(mainClock.mainClock.hour + ':00 ' +
+          'Restaurant ' + this.id + ' is closed.'));
       }
     });
     // Event to check whether restaurant is opened.
@@ -333,10 +333,10 @@ class restaurant{
   }
   // Function to get clock time
   localTime() {
-    if (timeClock.minute < 10) {
-      return timeClock.hour + ':0' + timeClock.minute;
-    } else if (timeClock.minute > 9) {
-      return timeClock.hour + ':' + timeClock.minute;
+    if (mainClock.mainClock.minute < 10) {
+      return mainClock.mainClock.hour + ':0' + mainClock.mainClock.minute;
+    } else if (mainClock.mainClock.minute > 9) {
+      return mainClock.mainClock.hour + ':' + mainClock.mainClock.minute;
     }
   }
   // Function to check if certain recipe can be cooked
@@ -452,10 +452,10 @@ class client{
   }
   // Function to get clock time
   currentTime() {
-      if (timeClock.minute < 10) {
-        return timeClock.hour + ':0' + timeClock.minute;
-      } else if (timeClock.minute > 9) {
-        return timeClock.hour + ':' + timeClock.minute;
+      if (mainClock.mainClock.minute < 10) {
+        return mainClock.mainClock.hour + ':0' + mainClock.mainClock.minute;
+      } else if (mainClock.mainClock.minute > 9) {
+        return mainClock.mainClock.hour + ':' + mainClock.mainClock.minute;
       }
     }
   // Function to look for a restaurant for a specific client
@@ -489,8 +489,8 @@ ev.on('createClients', () => {
   if (creationId < 20) {
     var newClient = new Client.client(creationId);
     listOfClients.push(newClient);
-    console.log(chalk.black(timeClock.hour + ':' +
-      timeClock.minute +
+    console.log(chalk.black(mainClock.mainClock.hour + ':' +
+      mainClock.mainClock.minute +
       ' *** Client n°' + newClient.id + ' ***'));
   } else {
     for (var y = 0; y < 20; y++) {
@@ -498,8 +498,8 @@ ev.on('createClients', () => {
         listOfClients[y].hunger = true;
         listOfClients[y].retry = 0;
         listOfClients[y].id = creationId;
-        console.log(chalk.black(timeClock.hour + ':' +
-          timeClock.minute +
+        console.log(chalk.black(mainClock.mainClock.hour + ':' +
+          mainClock.mainClock.minute +
           ' *** Client n°' + listOfClients[y].id + ' ***'));
         listOfClients[y].lookForRestaurant(listOfClients[y].id);
         break;
