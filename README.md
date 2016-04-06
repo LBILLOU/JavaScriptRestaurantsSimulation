@@ -1,4 +1,4 @@
-# **JavaScript Project : Restaurants Simulation :beer::pizza::hamburger:**
+# **JavaScript Project : Restaurants Simulation :fork_and_knife:**
 
 ## **Execution**
     1. Download DatFuckingNamePelo.zip.
