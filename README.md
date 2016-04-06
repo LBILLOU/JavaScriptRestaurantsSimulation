@@ -3,14 +3,25 @@
 ## **Execution**
     1. Download JavaScriptRestaurantsSimulation.zip.
     2. Extract files.
-    3. Run main.js file in terminal using Node JS.
-    4. Launch simulation.
+    3. Open project in your IDE.
+    4. Install modules(npm install).
+    5. Run main.js.
 	
 
 ## **Files Description**
 Files downloaded in JavaScriptRestaurantsSimulation.zip:
 
-    • xxx
+    • app folder (js files):
+    	-
+    	-
+    	-
+    	-
+    • .editorconfig: File to configure your IDE to this project.
+    • .gitignore
+    • .jscsrc
+    • .jshintrc
+    • Gruntfile.js: 
+    • package.json: All project dependencies.
     • README.md: read me file explaining and helping project setup.
     
 ## **Project Description**
