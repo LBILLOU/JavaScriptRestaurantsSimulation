@@ -1,14 +1,14 @@
 # **JavaScript Project : Restaurants Simulation :fork_and_knife:**
 
 ## **Execution**
-    1. Download DatFuckingNamePelo.zip.
+    1. Download JavaScriptRestaurantsSimulation.zip.
     2. Extract files.
     3. Run main.js file in terminal using Node JS.
     4. Launch simulation.
 	
 
 ## **Files Description**
-Files downloaded in XXX.zip:
+Files downloaded in JavaScriptRestaurantsSimulation.zip:
 
     • xxx
     • README.md: read me file explaining and helping project setup.
