@@ -9,6 +9,8 @@ const numberOfRestaurants = Restaurant.numberOfRestaurants;
 
 //Creating clock
 var mainClock = new Clock.clock();
+//Change to the following for testing Unit Tests
+//var mainClock = new Clock.constructor;
 
 // Creating market
 new Market.market();
