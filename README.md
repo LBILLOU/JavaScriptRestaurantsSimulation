@@ -108,7 +108,7 @@ Here are the settings that can easily be changed in project (cf. crc.js):
 		- Number of days of simulation 
 		- Number of restaurants
 		- Time for client to retry entering a restaurant
-		- Pourcentage of robbery chance every hour
+		- Percentage of robbery chance every hour
 		- Rush hour restaurant's stock check minimum value
 		- Market refueling value for each ingredient
 		
