@@ -16,15 +16,14 @@ Files downloaded in JavaScriptRestaurantsSimulation.zip:
     	- index.test.js: Unit tests file.
     	- main.js: Main file of simulation.
     	- market.js: Market class.
+    • .editorconfig: File to configure editor settings for this project.
+    • .jscssrc: File for project code style (used by Grunt).
+    • .jshintrc: File to look for potential errors/bugs (used by Grunt).
     • Gruntfile.js: Project's grunt file. 
     • package.json: All project dependencies.
     • README.md: read me file explaining and helping project setup.
     
 ## **Project Description**
-The following project is a simulation of XXX
-
-The project has been made made using Node JS and WebStorm .
-
 
 #### Story and Interactions
 Once a client is created, he becomes hungry. He then immediately looks for a restaurant:
@@ -112,7 +111,7 @@ Here are the settings that can easily be changed in project (cf. crc.js):
 		- Rush hour restaurant's stock check minimum value
 		- Market refueling value for each ingredient
 		
-For advanced settings make sure unit tests are effective.
+For advanced settings make sure unit tests are effective (npm test in IDE terminal).
 	
 #### Unit Testing
 Here are the basic unit tests made in this project (cf.index.test.js):
