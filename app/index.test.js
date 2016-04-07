@@ -4,7 +4,7 @@ var it = require('it');
 var Crc = require('./crc.js');
 
 Crc.restaurant.testRestaurant = new Crc.restaurant(0, [6, 22], 5);
-Crc.client.testClient = new Crc.client(0)
+Crc.client.testClient = new Crc.client(0);
 
 describe('Unit Tests', function() {
   'use strict';
