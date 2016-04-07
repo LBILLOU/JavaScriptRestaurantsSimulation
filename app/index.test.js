@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
-var describe = require('describe');
-var it = require('it');
+var describe = require('mocha').describe;
+var it = require('mocha').it;
 var Crc = require('./crc.js');
 
 Crc.restaurant.testRestaurant = new Crc.restaurant(0, [6, 22], 5);
