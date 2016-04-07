@@ -5,7 +5,7 @@
     2. Extract files.
     3. Open project in your IDE.
     4. Install modules(npm install).
-    5. Run main.js.
+    5. Create and run a new Grunt Run/Debug file.
 	
 
 ## **Files Description**
