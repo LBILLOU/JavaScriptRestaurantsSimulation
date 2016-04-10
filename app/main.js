@@ -1,10 +1,10 @@
 'use strict';
 
 const chalk = require('chalk');
-
 var Market = require('./market.js');
 var Restaurant = require('./crc.js');
 var Clock = require('./crc.js');
+
 const numberOfRestaurants = Restaurant.numberOfRestaurants;
 
 //Creating clock

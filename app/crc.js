@@ -33,9 +33,11 @@ class Clock {
     this.hour = 23; // Number of hours of clock
     this.day = 0; // Number of days of clock
     // Launch clock minute++ every 'simulation minute time'
-    this.whatTimeIsIt = setInterval(() => {this.runClock();
+    this.whatTimeIsIt = setInterval(() => {
+      this.runClock();
     }, msForMinute);
   }
+
   // Function to operate clock
   runClock() {
     this.minute++;
@@ -90,9 +92,9 @@ class Clock {
       this.clientCreation(0.1, 30);
     } else if (this.hour == 8) {
       this.clientCreation(0.2, 20);
-    }else if (this.hour == 9) {
+    } else if (this.hour == 9) {
       this.clientCreation(0.2, 10);
-    }else if (this.hour == 10) {
+    } else if (this.hour == 10) {
       this.clientCreation(0.3, 10);
     } else if (this.hour == 11) {
       this.clientCreation(0.4, 10);
@@ -100,7 +102,7 @@ class Clock {
       if (!this.minute) {
         ev.emit('checkStock');
       }
-    }else if (this.hour == 12) {
+    } else if (this.hour == 12) {
       this.clientCreation(0.5, 3);
     } else if (this.hour == 13) {
       this.clientCreation(0.5, 5);
@@ -126,10 +128,11 @@ class Clock {
       this.clientCreation(0.5, 3);
     } else if (this.hour == 22) {
       this.clientCreation(0.5, 6);
-    }else if (this.hour == 22) {
+    } else if (this.hour == 22) {
       this.clientCreation(0.2, 10);
     }
   }
+
   // Function to create client while clock is running.
   // For defined frequency and possibility of occurrence -> create a new client
   clientCreation(chanceOfCreation, frequencyInMinutes) {
@@ -145,20 +148,20 @@ class Clock {
 //var timeClock = new Clock();
 
 // Restaurant class
-class restaurant{
+class restaurant {
   /**
    * Construct a Restaurant
    * @param {int} id - Specific an unique ID for the restaurant
    * @param {[int]} hours - Opening and closing hours ex:[6, 22]
    * @param {int} seats - Number of seats of the restaurant
-     */
+   */
   constructor(id, hours, seats) {
     this.id = id; // Identification number of restaurant
     this.isOpen = false; // Boolean to tell if restaurant is opened or not
     this.hours = hours; // Restaurant's opening and closing hours
     this.clients = 0; // Number of clients currently in restaurant
     this.seats = seats; // Number of seats of restaurant
-    this.ingredients = [10,10,10]; // Starting Stocks for every restaurant
+    this.ingredients = [10, 10, 10]; // Starting Stocks for every restaurant
     this.recipes = [[1, 1, 0], [0, 1, 1], [1, 0, 1]]; // Recipes of restaurant
     this.score = 0; // General score of restaurant
     this.dayPoints = 0; // Points of the day of restaurant
@@ -195,7 +198,7 @@ class restaurant{
           // Wait for restaurant to cook recipe
           ev.emit('waitForCooking', idClient, restaurantNumber,
             this.ingredients);
-         // If recipe cannot be cooked
+          // If recipe cannot be cooked
         } else {
           console.log(chalk.yellow(this.localTime() + ' Restaurant ' +
             this.id + ' : Sorry we need to go to the market.' +
@@ -205,7 +208,7 @@ class restaurant{
           // Tell client to retry another restaurant
           ev.emit('retryRestaurant', idClient);
         }
-      // For chosen restaurant, if opened but full
+        // For chosen restaurant, if opened but full
       } else if (this.id == restaurantNumber && this.isOpen &&
         this.clients == this.seats) {
         console.log(chalk.yellow(this.localTime() + ' Restaurant ' +
@@ -213,7 +216,7 @@ class restaurant{
           '/' + this.seats + ')'));
         // Tell client to retry another restaurant
         ev.emit('retryRestaurant', idClient);
-      // For chosen restaurant, if closed
+        // For chosen restaurant, if closed
       } else {
         if (this.id == restaurantNumber && !this.isOpen) {
           console.log(chalk.yellow(this.localTime() + ' Restaurant ' +
@@ -331,6 +334,7 @@ class restaurant{
       }
     });
   }
+
   // Function to get clock time
   localTime() {
     if (mainClock.mainClock.minute < 10) {
@@ -339,6 +343,7 @@ class restaurant{
       return mainClock.mainClock.hour + ':' + mainClock.mainClock.minute;
     }
   }
+
   // Function to check if certain recipe can be cooked
   canRecipeBeCooked(recipeNumber) {
     var count = 0;
@@ -351,6 +356,7 @@ class restaurant{
       return true;
     }
   }
+
   // Function to enable restaurant to go to market to get ingredients
   goToMarket(restaurantNumber) {
     if (this.id == restaurantNumber && this.isOpen) {
@@ -362,8 +368,9 @@ class restaurant{
             this.ingredients[x] = marketRefuelValue;
           }
           console.log(chalk.yellow(this.localTime() + ' Restaurant ' +
-          this.id + ' went to the market' + '(' + marketWaitingTime + ').' +
-        '(' + this.ingredients + ')'));}, marketWaitingTime * msForMinute);
+            this.id + ' went to the market' + '(' + marketWaitingTime + ').' +
+            '(' + this.ingredients + ')'));
+        }, marketWaitingTime * msForMinute);
       } else {
         console.log(chalk.yellow(this.localTime() + ' Restaurant ' +
           this.id + ' went to the market, but it was closed.'));
@@ -373,11 +380,11 @@ class restaurant{
 }
 
 // Client class
-class client{
+class client {
   /**
    * Construct a Client
    * @param {int} id - Specific an unique ID for the client
-     */
+   */
   constructor(id) {
     this.id = id; // Identification number of client
     this.patience = Math.floor((31 * Math.random()) + 10); // Patience 10-40min
@@ -397,7 +404,7 @@ class client{
           // Enable client to retry new restaurant after certain waiting time
           setTimeout(() => {this.lookForRestaurant(this.id);},
             tryAnother * msForMinute);
-        // If client has retried 3 times -> client leaves
+          // If client has retried 3 times -> client leaves
         } else {
           console.log(this.currentTime() + ' Client ' + this.id +
             ' : I have no more time, I will get food somewhere else.');
@@ -450,30 +457,32 @@ class client{
       }
     });
   }
+
   // Function to get clock time
   currentTime() {
-      if (mainClock.mainClock.minute < 10) {
-        return mainClock.mainClock.hour + ':0' + mainClock.mainClock.minute;
-      } else if (mainClock.mainClock.minute > 9) {
-        return mainClock.mainClock.hour + ':' + mainClock.mainClock.minute;
-      }
+    if (mainClock.mainClock.minute < 10) {
+      return mainClock.mainClock.hour + ':0' + mainClock.mainClock.minute;
+    } else if (mainClock.mainClock.minute > 9) {
+      return mainClock.mainClock.hour + ':' + mainClock.mainClock.minute;
     }
+  }
+
   // Function to look for a restaurant for a specific client
   lookForRestaurant(id) {
-      if (this.id == id) {
-        console.log(this.currentTime() + ' Client ' + this.id +
-          ' : I am hungry.');
-        // Choose random restaurant
-        var chooseRestaurant = Math.floor((listOfRestaurants.length) *
-          Math.random());
-        // Choose random recipe
-        var chooseRecipe = Math.floor(numberOfRecipes * Math.random());
-        console.log(this.currentTime() + ' Client ' + this.id +
-          ' : Can I come in restaurant ' + chooseRestaurant + '?');
-        // Check if restaurant is opened or not
-        ev.emit('isRestaurantOpened', this.id, chooseRestaurant, chooseRecipe);
-      }
+    if (this.id == id) {
+      console.log(this.currentTime() + ' Client ' + this.id +
+        ' : I am hungry.');
+      // Choose random restaurant
+      var chooseRestaurant = Math.floor((listOfRestaurants.length) *
+        Math.random());
+      // Choose random recipe
+      var chooseRecipe = Math.floor(numberOfRecipes * Math.random());
+      console.log(this.currentTime() + ' Client ' + this.id +
+        ' : Can I come in restaurant ' + chooseRestaurant + '?');
+      // Check if restaurant is opened or not
+      ev.emit('isRestaurantOpened', this.id, chooseRestaurant, chooseRecipe);
     }
+  }
 }
 
 

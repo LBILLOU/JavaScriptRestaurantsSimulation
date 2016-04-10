@@ -1,13 +1,15 @@
+'use strict';
+
 var expect = require('chai').expect;
 var describe = require('mocha').describe;
 var it = require('mocha').it;
-var Crc = require('./crc.js');
+require('../app/main.js'); // for cyclic dependency fail
+var Crc = require('../app/crc.js');
 
 Crc.restaurant.testRestaurant = new Crc.restaurant(0, [6, 22], 5);
 Crc.client.testClient = new Crc.client(0);
 
 describe('Unit Tests', function() {
-  'use strict';
   it('Positive number of days of simulation.', function() {
     expect(Crc.daysOfSimulation).to.be.greaterThan(0);
   });
