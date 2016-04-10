@@ -1,6 +1,14 @@
 # **JavaScript Project : Restaurants Simulation :fork_and_knife:**
 
 ## **Execution**
+    git clone
+    npm install
+    npm start
+    
+###### Test
+`npm test`
+
+###### Other method
     1. Download JavaScriptRestaurantsSimulation.zip.
     2. Extract files.
     3. Open project in your IDE.
