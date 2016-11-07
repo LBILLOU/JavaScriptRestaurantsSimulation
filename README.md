@@ -94,7 +94,7 @@ If ingredient is missing/inferior to 5 units the restaurant will then go to the 
 • **Restaurants Scores** :star::star::star:
 
 	- If client is served 10 minutes before his waiting patience time, the restaurant is given 2 points.
-	- If client is served 5 minutes after his waiting patience time, the restaurant is given no points.
+	- If client is served 5 minutes after his waiting patience time, the restaurant is given no point.
 	- Else if client is served, the restaurant is given 1 point.
 	
 A restaurant's score is defined at the end of the day. The points of a restaurant are multiplied by the number of the restaurant's closed hours over a day.
